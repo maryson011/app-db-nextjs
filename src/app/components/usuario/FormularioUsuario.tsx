@@ -3,6 +3,7 @@ import InputTexto from "../shared/InputTexto";
 
 export interface FormuaraioUsuarioProps{
     usuario: Usuario
+    onChange: (usuario: Usuario) => void
 }
 
 export default function FormularioUsuario(props: FormuaraioUsuarioProps) {
@@ -12,19 +13,25 @@ export default function FormularioUsuario(props: FormuaraioUsuarioProps) {
             label="Nome" 
             type="text" 
             value={props.usuario.nome} 
-            onChange={() => {}} 
+            onChange={
+                e => props.onChange?.({...props.usuario, nome: e.target.value })
+            } 
             />
             <InputTexto 
             label="Email" 
             type="email" 
             value={props.usuario.email} 
-            onChange={() => {}} 
+            onChange={
+                e => props.onChange?.({...props.usuario, email: e.target.value })
+            } 
             />
             <InputTexto 
             label="Senha" 
             type="password" 
             value={props.usuario.senha} 
-            onChange={() => {}} 
+            onChange={
+                e => props.onChange?.({...props.usuario, senha: e.target.value })
+            } 
             />
             <div className="flex gap-5">
                 <button className="bg-blue-500 px-4 py-2 rounded-md">Salvar</button>
