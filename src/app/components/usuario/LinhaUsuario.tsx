@@ -3,11 +3,14 @@ import Image from "next/image";
 
 export interface LinhaUsuarioProps {
     usuario: Usuario
+    onClick?: (usuario: Usuario) => void
 }
 
 export default function LinhaUsuario(props: LinhaUsuarioProps) {
     return (
-        <div className="flex p-4 bg-zinc-900 items-center gap-5 rounded-md">
+        <div className="flex p-4 bg-zinc-900 items-center gap-5 rounded-md cursor-pointer"
+            onClick={() => props.onClick?.(props.usuario)}
+        >
             <Image
                 src="http://source.unsplash.com/random/80x80?avatar"
                 width={80}
